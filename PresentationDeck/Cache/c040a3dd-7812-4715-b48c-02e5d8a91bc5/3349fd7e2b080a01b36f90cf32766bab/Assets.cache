@@ -1,0 +1,13 @@
+- !<AssetCache>
+  AssetFiles:
+    eecb7ee1-2e2d-48b9-9599-8453b5330517: c040a3dd-7812-4715-b48c-02e5d8a91bc5/3349fd7e2b080a01b36f90cf32766bab/Data/Sundial Start.png
+  Assets:
+    - !<FileTexture/eecb7ee1-2e2d-48b9-9599-8453b5330517>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 1696
+        Height: 1090
+  SourceHash: 3349fd7e2b080a01b36f90cf32766bab
+  FileHash: f2a39f1ab3191fe41fbd022b1b9d868a
+  NativePackageItems:
+    []
