@@ -1,0 +1,37 @@
+- !<NativePackageDescriptor/4546e4cf-7367-4d98-976a-631521999db7>
+  PackagePath: ""
+  StudioVersion:
+    major: 5
+    minor: 15
+    patch: 4
+    build: 26022322
+    type: Unset
+    buildFlavor: ""
+    timestamp: 0
+    commit: ""
+  Description: "Solar System Pack The solar system pack includes 3D models consisting of the sun and the eight planets revolving around it, as well as the moon. The solar system consists of: Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune in addition to the Moon The moon is part of the solar system that revolves around the earth Learn more here"
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  VersionMajor: 1
+  VersionMinor: 0
+  VersionPatch: 0
+  UpdateCheckpoint: 76
+  ExportUid: 1e36b1a9-955f-44d5-ab6a-ea6f30bf1327
+  ComponentUid: 7a443b7a-7f29-46ba-95f0-b3c4225fc261
+  PackagePolicy: CanBeUnpackedTransparent
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  Instantiable: !<reference> 00000000-0000-0000-0000-000000000000
+  AssetLibraryDependencyStructure: !<AssetLibraryDependencyStructure>
+    Name: ""
+    AssetId: ""
+    Hash: ""
+    Version:
+      major: 0
+      minor: 0
+      patch: 0
+      build: 0
