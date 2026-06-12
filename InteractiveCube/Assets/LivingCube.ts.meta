@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/9dde4958-5fce-4727-980f-5b98e59f867a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f28a8bc0-1098-4156-96cf-6fc5365bd410
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f28a8bc0-1098-4156-96cf-6fc5365bd410
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> fdb06f65-a6f9-4cdf-9294-d231f23b1fac
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/fdb06f65-a6f9-4cdf-9294-d231f23b1fac>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d7d1d61e-cee5-4398-9402-3f860970d8cb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cubeObject: false
+    labelMargin: false
+    volumePanel: false
+    xLabel: false
+    yLabel: false
+    zLabel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - xLabel: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      yLabel: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      zLabel: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      volumePanel: !<reference.Text3D> 00000000-0000-0000-0000-000000000000
+      cubeObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      labelMargin: !<float> 5.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Text3D xLabel {"hint":"Text near the X edge"}'
+    - '// @input Component.Text3D yLabel {"hint":"Text near the Y edge"}'
+    - '// @input Component.Text3D zLabel {"hint":"Text near the Z edge"}'
+    - '// @input Component.Text3D volumePanel {"hint":"Text panel for the volume equation"}'
+    - '// @input SceneObject cubeObject {"hint":"Optional: drag the visible cube object here if the labels stay blank."}'
+    - '// @input float labelMargin = 4 {"hint":"Gap (cm) between a face and its label"}'
