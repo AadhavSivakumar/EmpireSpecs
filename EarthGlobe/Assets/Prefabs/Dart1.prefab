@@ -34,6 +34,7 @@
   Enabled: true
   ScriptAsset: !<reference> 8161d97f-cfdc-4bca-bbbf-6bdb6b553795
   ScriptInputsDefault:
+    objectType: true
     ballThrowForce: true
     handVelocityMultiplier: true
     enableLogging: true

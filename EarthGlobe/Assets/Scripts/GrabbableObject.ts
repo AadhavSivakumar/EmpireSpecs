@@ -13,7 +13,6 @@ import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
  */
 @component
 export class GrabbableObject extends BaseScriptComponent {
-  // Public events for visual feedback systems
   public onGrabStartEvent: Event = new Event()
   public onGrabEndEvent: Event = new Event()
 
@@ -43,7 +42,7 @@ export class GrabbableObject extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Dart Settings</span>')
   @input
-  @hint("For Darts: The dartboard/scoreboard to look at when grabbed")
+  @hint("For Darts: The dartboard/scoreboard (no longer used for aiming)")
   @showIf("objectType", "Darts")
   scoreBoard: SceneObject
 
@@ -59,7 +58,7 @@ export class GrabbableObject extends BaseScriptComponent {
   ballThrowForce: number = 150.0
 
   @input
-  @hint("For Ball/Racket: Multiplier for hand velocity (higher = more responsive to hand movement)")
+  @hint("For Ball/Racket: Multiplier for hand velocity")
   handVelocityMultiplier: number = 0.3
 
   @ui.separator
@@ -69,7 +68,7 @@ export class GrabbableObject extends BaseScriptComponent {
   enableLogging: boolean = false
 
   @input
-  @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy)")
+  @hint("Enable lifecycle logging")
   enableLoggingLifecycle: boolean = false
 
   private logger: Logger
@@ -81,32 +80,21 @@ export class GrabbableObject extends BaseScriptComponent {
   private updateEvent: SceneEvent | null = null
   private previousHandPosition: vec3 = vec3.zero()
   private handVelocity: vec3 = vec3.zero()
+  private worldCamera: Camera | null = null
 
   onAwake() {
     this.logger = new Logger("GrabbableObject", this.enableLogging || this.enableLoggingLifecycle, true)
-    if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onAwake()")
-
     this.bodyComponent = this.getSceneObject().getComponent("Physics.BodyComponent")
-
     if (!this.bodyComponent) {
       this.colliderComponent = this.getSceneObject().getComponent("Physics.ColliderComponent")
     }
-
     if (!this.matchTransform) {
       this.logger.warn("MatchTransform component is required!")
     }
-
-    if (!this.bodyComponent && !this.colliderComponent) {
-      this.logger.warn("Physics Body or Collider component is required!")
-    }
   }
 
-  /**
-   * Called by GestureManager when object is grabbed
-   */
   onGrab(hand: TrackedHand) {
     if (this.isGrabbed) return
-
     this.isGrabbed = true
     this.grabbedHand = hand
 
@@ -117,9 +105,7 @@ export class GrabbableObject extends BaseScriptComponent {
 
     const currentWorldPos = this.getSceneObject().getTransform().getWorldPosition()
     const currentWorldRot = this.getSceneObject().getTransform().getWorldRotation()
-
     this.getSceneObject().setParent(null)
-
     this.getSceneObject().getTransform().setWorldPosition(currentWorldPos)
     this.getSceneObject().getTransform().setWorldRotation(currentWorldRot)
 
@@ -133,25 +119,14 @@ export class GrabbableObject extends BaseScriptComponent {
       this.matchTransform.setTarget &&
       this.matchTransform.enableMatching
     ) {
-      const afterUnparentPos = this.getSceneObject().getTransform().getWorldPosition()
-
-      this.logger.debug(`After unparent - pos: ${afterUnparentPos}`)
-      this.logger.debug(`Hand index tip - pos: ${hand.indexTip.position}`)
-
       this.matchTransform.resetOffset()
-
       this.matchTransform.setTarget(hand.indexTip.position, hand.indexTip.rotation)
-
       this.matchTransform.enableMatching()
-
       if (this.objectType === "Darts") {
         this.matchTransform.disableRotationUpdates()
-        this.logger.debug("Rotation updates disabled for dart (will be overridden)")
       } else {
         this.matchTransform.enableRotationUpdates()
       }
-
-      this.logger.debug("MatchTransform enabled with offset initialized")
     } else {
       this.logger.error("MatchTransform not available or missing methods!")
     }
@@ -159,33 +134,24 @@ export class GrabbableObject extends BaseScriptComponent {
     this.previousHandPosition = hand.indexTip.position
     this.handVelocity = vec3.zero()
 
-    // UpdateEvent is created conditionally during grab (not a lifecycle pattern)
     this.updateEvent = this.createEvent("UpdateEvent")
     this.updateEvent.bind(this.onUpdateWhileGrabbed.bind(this))
 
     this.onGrabStartEvent.invoke()
-
-    this.logger.info(`(${this.getSceneObject().name}): Grabbed! Update event created.`)
+    this.logger.info(`(${this.getSceneObject().name}): Grabbed! [v6 facing-aim build]`)
   }
 
-  private updateCounter = 0
-
   private onUpdateWhileGrabbed() {
-    if (!this.isGrabbed || !this.grabbedHand || !this.matchTransform) {
-      return
-    }
-
+    if (!this.isGrabbed || !this.grabbedHand || !this.matchTransform) return
     if (!this.grabbedHand.isTracked()) {
       this.onRelease()
       return
     }
 
     const currentHandPos = this.grabbedHand.indexTip.position
-
     if (getDeltaTime() > 0) {
       this.handVelocity = currentHandPos.sub(this.previousHandPosition).uniformScale(1 / getDeltaTime())
     }
-
     this.previousHandPosition = currentHandPos
 
     if (this.matchTransform.setTarget) {
@@ -202,60 +168,37 @@ export class GrabbableObject extends BaseScriptComponent {
     }
 
     this.applyTypeSpecificRotation()
-
-    this.updateCounter++
-    if (this.updateCounter % 30 === 0) {
-      this.logger.debug(`Setting target to ${this.grabbedHand.indexTip.position}`)
-    }
   }
 
+  // While holding a dart, point its nose where you're FACING (so it follows your turn).
   private applyTypeSpecificRotation() {
-    const transform = this.getSceneObject().getTransform()
-
-    if (this.objectType === "Darts") {
-      if (this.scoreBoard) {
-        const boardPos = this.scoreBoard.getTransform().getWorldPosition()
-        const myPos = transform.getWorldPosition()
-        const directionToBoard = boardPos.sub(myPos).normalize()
-
-        const lookAtRotation = quat.lookAt(directionToBoard, vec3.up())
-
-        const xRotation = quat.angleAxis(90 * MathUtils.DegToRad, vec3.right())
-        const finalRotation = lookAtRotation.multiply(xRotation)
-
-        transform.setWorldRotation(finalRotation)
-      }
-    }
+    if (this.objectType !== "Darts") return
+    const cam = this.getWorldCamera()
+    if (!cam) return
+    const dir = cam.getTransform().getWorldTransform()
+      .multiplyDirection(new vec3(0, 0, -1)).normalize()
+    this.getSceneObject().getTransform().setWorldRotation(this.aimRotation(dir))
   }
 
   getGestureType(): "pinch" | "grab" {
-    if (this.objectType === "Racket") {
-      return "grab"
-    }
-    return "pinch"
+    return this.objectType === "Racket" ? "grab" : "pinch"
   }
 
-  /**
-   * Called by GestureManager when object is released
-   */
   onRelease() {
     if (!this.isGrabbed) return
-
     this.isGrabbed = false
 
     if (this.updateEvent) {
       this.updateEvent.enabled = false
       this.updateEvent = null
     }
-
     if (this.matchTransform && this.matchTransform.disableMatching) {
       this.matchTransform.disableMatching()
     }
 
     if (this.bodyComponent) {
       this.bodyComponent.dynamic = true
-
-      if (this.objectType === "Darts" && this.scoreBoard) {
+      if (this.objectType === "Darts") {
         this.throwDart()
       } else if (this.objectType === "Ball") {
         this.throwBall()
@@ -263,50 +206,64 @@ export class GrabbableObject extends BaseScriptComponent {
     }
 
     this.grabbedHand = null
-
     this.handVelocity = vec3.zero()
     this.previousHandPosition = vec3.zero()
-
     this.scheduleDestroy()
 
     this.logger.info(`(${this.getSceneObject().name}): Released!`)
-
-    this.logger.debug("Invoking onGrabEndEvent")
     this.onGrabEndEvent.invoke()
   }
 
   private throwDart() {
-    if (!this.bodyComponent || !this.scoreBoard) return
-
-    const myPos = this.getSceneObject().getTransform().getWorldPosition()
-    const boardPos = this.scoreBoard.getTransform().getWorldPosition()
-
-    const directionToBoard = boardPos.sub(myPos).normalize()
-
-    let throwStrength = this.handVelocity.length * this.handVelocityMultiplier
-
-    if (throwStrength < 2) {
-      throwStrength = this.dartThrowForce
-    } else {
-      throwStrength += this.dartThrowForce
+    if (!this.bodyComponent) return
+    const cam = this.getWorldCamera()
+    if (!cam) {
+      this.logger.error("No Camera found in the scene — cannot determine facing direction.")
+      return
     }
-
-    const forceVector = directionToBoard.uniformScale(throwStrength)
-
+    // Throw where you're facing (camera looks down local -Z). If it flies BEHIND you, change -1 to 1.
+    const dir = cam.getTransform().getWorldTransform()
+      .multiplyDirection(new vec3(0, 0, -1)).normalize()
+    this.getSceneObject().getTransform().setWorldRotation(this.aimRotation(dir))
     this.bodyComponent.angularVelocity = vec3.zero()
     this.bodyComponent.angularDamping = 0.95
+    this.bodyComponent.addForce(dir.uniformScale(this.dartThrowForce), Physics.ForceMode.Impulse)
+  }
 
-    this.logger.info(`Throwing dart with strength ${throwStrength.toFixed(1)} towards board`)
-    this.logger.debug(`Hand velocity: ${this.handVelocity.length.toFixed(1)}`)
+  // Orients the dart so its nose points along `dir`. If the nose looks wrong, append
+  // .multiply(quat.angleAxis(Math.PI / 2, vec3.right())) and tweak the angle/axis.
+  private aimRotation(dir: vec3): quat {
+    return quat.lookAt(dir, vec3.up()).multiply(quat.angleAxis(Math.PI / 2, vec3.right()))
+  }
 
-    this.bodyComponent.addForce(forceVector, Physics.ForceMode.Impulse)
+  // Finds the scene camera once, then caches it.
+  private getWorldCamera(): Camera | null {
+    if (this.worldCamera) return this.worldCamera
+    const count = global.scene.getRootObjectsCount()
+    for (let i = 0; i < count; i++) {
+      const found = this.searchForCamera(global.scene.getRootObject(i))
+      if (found) {
+        this.worldCamera = found
+        return found
+      }
+    }
+    return null
+  }
+
+  private searchForCamera(obj: SceneObject): Camera | null {
+    const cam = obj.getComponent("Component.Camera") as Camera
+    if (cam) return cam
+    const n = obj.getChildrenCount()
+    for (let i = 0; i < n; i++) {
+      const found = this.searchForCamera(obj.getChild(i))
+      if (found) return found
+    }
+    return null
   }
 
   private throwBall() {
     if (!this.bodyComponent) return
-
     let throwVelocity = this.handVelocity.uniformScale(this.handVelocityMultiplier)
-
     if (throwVelocity.length < 2) {
       if (this.grabbedHand) {
         const handForward = this.grabbedHand.indexTip.rotation.multiplyVec3(vec3.forward())
@@ -314,36 +271,20 @@ export class GrabbableObject extends BaseScriptComponent {
       } else {
         throwVelocity = vec3.forward().uniformScale(this.ballThrowForce)
       }
-    } else {
-      if (this.grabbedHand) {
-        const handForward = this.grabbedHand.indexTip.rotation.multiplyVec3(vec3.forward())
-        const baseForce = handForward.uniformScale(this.ballThrowForce)
-        throwVelocity = throwVelocity.add(baseForce)
-      }
+    } else if (this.grabbedHand) {
+      const handForward = this.grabbedHand.indexTip.rotation.multiplyVec3(vec3.forward())
+      throwVelocity = throwVelocity.add(handForward.uniformScale(this.ballThrowForce))
     }
-
-    this.logger.info(`Throwing ${this.objectType} with velocity ${throwVelocity.length.toFixed(1)}`)
-    this.logger.debug(`Hand velocity contribution: ${this.handVelocity.length.toFixed(1)}`)
-
     this.bodyComponent.addForce(throwVelocity, Physics.ForceMode.Impulse)
   }
 
   private scheduleDestroy() {
-    if (this.destroyEvent) {
-      this.destroyEvent.cancel()
-    }
-
+    if (this.destroyEvent) this.destroyEvent.cancel()
     this.destroyEvent = this.createEvent("DelayedCallbackEvent")
     this.destroyEvent.bind(() => {
       if (this.objectType === "Darts" && this.scoreBoard) {
-        const parent = this.getSceneObject().getParent()
-        if (parent === this.scoreBoard) {
-          this.logger.debug("Dart stuck to board - skipping destroy")
-          return
-        }
+        if (this.getSceneObject().getParent() === this.scoreBoard) return
       }
-
-      this.logger.info("Destroying object after delay")
       this.getSceneObject().destroy()
     })
     this.destroyEvent.reset(this.destroyDelay)
