@@ -58,8 +58,8 @@
     -
       {}
   InputLines:
-    - '// @input SceneObject[] planets {"hint":"Drag each planet object here (one entry per planet)"}'
-    - "// @input float planetScale = 8 {\"hint\":\"Uniform size for every planet. LOWER this if they're too big.\"}"
+    - '// @input SceneObject[] planets = {} {"hint":"Drag each planet object here (one entry per planet)"}'
+    - "// @input float planetScale = 8 {\"hint\":\"Earth's diameter in scene units (cm). Other planets use real diameter ratios.\"}"
     - '// @input float innerRadius = 90 {"hint":"Radius of the innermost orbit (cm)"}'
     - '// @input float radiusStep = 35 {"hint":"How much farther each next planet orbits (cm)"}'
     - '// @input float baseOrbitSpeed = 20 {"hint":"Orbit speed of the innermost planet (deg/sec). Inner planets go faster."}'

@@ -1,9 +1,9 @@
 @component
 export class PlanetOrbits extends BaseScriptComponent {
   @input @hint("Drag each planet object here (one entry per planet)")
-  planets: SceneObject[]
+  planets: SceneObject[] = []
 
-  @input @hint("Uniform size for every planet. LOWER this if they're too big.")
+  @input @hint("Earth's diameter in scene units (cm). Other planets use real diameter ratios.")
   planetScale: number = 8
 
   @input @hint("Radius of the innermost orbit (cm)")
@@ -17,13 +17,24 @@ export class PlanetOrbits extends BaseScriptComponent {
 
   // ── Popup (wired once here; shared by all planets) ──
   @input @hint("The popup panel object to show/hide on a hit") @allowUndefined
-  popupPanel: SceneObject = null
+  popupPanel: SceneObject | null = null
   @input @hint("Text3D for the planet name") @allowUndefined
-  popupTitle: Text = null
+  popupTitle: Text | null = null
   @input @hint("Text3D for the fact") @allowUndefined
-  popupBody: Text = null
+  popupBody: Text | null = null
   @input @hint("Seconds the popup stays up")
   popupDuration: number = 5
+
+  private readonly planetDiametersKm: number[] = [
+    4879,   // Mercury
+    12104,  // Venus
+    12742,  // Earth
+    6779,   // Mars
+    139820, // Jupiter
+    116460, // Saturn
+    50724,  // Uranus
+    49244,  // Neptune
+  ]
 
   private angles: number[] = []
   private paused: boolean = false
@@ -38,7 +49,11 @@ export class PlanetOrbits extends BaseScriptComponent {
     for (let i = 0; i < this.planets.length; i++) {
       const p = this.planets[i]
       if (!p) continue
-      p.getTransform().setLocalScale(new vec3(this.planetScale, this.planetScale, this.planetScale))
+      const earthDiameterKm = 12742
+      const planetDiameterKm = this.planetDiametersKm[i] || earthDiameterKm
+      const relativeScale = planetDiameterKm / earthDiameterKm
+      const sceneScale = this.planetScale * relativeScale
+      p.getTransform().setLocalScale(new vec3(sceneScale, sceneScale, sceneScale))
       this.angles[i] = (i / this.planets.length) * 2 * Math.PI // spread them around the ring
     }
   }
