@@ -3,8 +3,17 @@ export class PlanetOrbits extends BaseScriptComponent {
   @input @hint("Drag each planet object here (one entry per planet)")
   planets: SceneObject[] = []
 
-  @input @hint("Earth's diameter in scene units (cm). Other planets use real diameter ratios.")
-  planetScale: number = 8
+  @input @hint("Earth's diameter in scene units (cm). Other planets scale relative to this by real diameter ratios.")
+  planetScale: number = 12
+
+  @input @hint("How strongly to compress real diameter differences. 1 = true scale, 0.5 = square-root (proportional but playable), 0 = all equal.")
+  sizeRelativityExponent: number = 0.5
+
+  @input @hint("Safety ceiling on visible size (scene units). Set high so planets stay distinct; lower only if a giant is too big.")
+  maxPlanetScale: number = 60
+
+  @input @hint("Safety floor on visible size (scene units). Keeps the tiniest planet from vanishing.")
+  minPlanetScale: number = 5
 
   @input @hint("Radius of the innermost orbit (cm)")
   innerRadius: number = 90
@@ -14,6 +23,9 @@ export class PlanetOrbits extends BaseScriptComponent {
 
   @input @hint("Orbit speed of the innermost planet (deg/sec). Inner planets go faster.")
   baseOrbitSpeed: number = 20
+
+  @input @hint("Per-planet vertical nudge (cm), same order as Planets. Use to lift a model whose pivot sits off-center (e.g. Saturn).")
+  planetYOffsets: number[] = []
 
   // ── Popup (wired once here; shared by all planets) ──
   @input @hint("The popup panel object to show/hide on a hit") @allowUndefined
@@ -46,13 +58,13 @@ export class PlanetOrbits extends BaseScriptComponent {
   }
 
   private setup(): void {
+    const earthDiameterKm = 12742
     for (let i = 0; i < this.planets.length; i++) {
       const p = this.planets[i]
       if (!p) continue
-      const earthDiameterKm = 12742
       const planetDiameterKm = this.planetDiametersKm[i] || earthDiameterKm
-      const relativeScale = planetDiameterKm / earthDiameterKm
-      const sceneScale = this.planetScale * relativeScale
+      const relativeScale = Math.pow(planetDiameterKm / earthDiameterKm, this.sizeRelativityExponent)
+      const sceneScale = Math.max(this.minPlanetScale, Math.min(this.planetScale * relativeScale, this.maxPlanetScale))
       p.getTransform().setLocalScale(new vec3(sceneScale, sceneScale, sceneScale))
       this.angles[i] = (i / this.planets.length) * 2 * Math.PI // spread them around the ring
     }
@@ -70,7 +82,8 @@ export class PlanetOrbits extends BaseScriptComponent {
       this.angles[i] += speed * dt
       const x = center.x + Math.cos(this.angles[i]) * radius
       const z = center.z + Math.sin(this.angles[i]) * radius
-      p.getTransform().setWorldPosition(new vec3(x, center.y, z))
+      const yOffset = this.planetYOffsets[i] || 0
+      p.getTransform().setWorldPosition(new vec3(x, center.y + yOffset, z))
     }
   }
 

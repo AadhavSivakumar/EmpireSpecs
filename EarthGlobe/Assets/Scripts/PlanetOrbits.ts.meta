@@ -28,13 +28,17 @@
   ScriptInputsHidden:
     baseOrbitSpeed: false
     innerRadius: false
+    maxPlanetScale: false
+    minPlanetScale: false
     planetScale: false
+    planetYOffsets: false
     planets: false
     popupBody: false
     popupDuration: false
     popupPanel: false
     popupTitle: false
     radiusStep: false
+    sizeRelativityExponent: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -47,9 +51,14 @@
     - planets: !<reference.SceneObject[]>
         []
       planetScale: !<float> 8.000000
+      sizeRelativityExponent: 0.350000
+      maxPlanetScale: !<float> 20.000000
+      minPlanetScale: !<float> 6.000000
       innerRadius: !<float> 90.000000
       radiusStep: !<float> 35.000000
       baseOrbitSpeed: !<float> 20.000000
+      planetYOffsets: !<float[]>
+        []
       popupPanel: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       popupTitle: !<reference.Text> 00000000-0000-0000-0000-000000000000
       popupBody: !<reference.Text> 00000000-0000-0000-0000-000000000000
@@ -59,10 +68,14 @@
       {}
   InputLines:
     - '// @input SceneObject[] planets = {} {"hint":"Drag each planet object here (one entry per planet)"}'
-    - "// @input float planetScale = 8 {\"hint\":\"Earth's diameter in scene units (cm). Other planets use real diameter ratios.\"}"
+    - "// @input float planetScale = 12 {\"hint\":\"Earth's diameter in scene units (cm). Other planets scale relative to this by real diameter ratios.\"}"
+    - '// @input float sizeRelativityExponent = 0.5 {"hint":"How strongly to compress real diameter differences. 1 = true scale, 0.5 = square-root (proportional but playable), 0 = all equal."}'
+    - '// @input float maxPlanetScale = 60 {"hint":"Safety ceiling on visible size (scene units). Set high so planets stay distinct; lower only if a giant is too big."}'
+    - '// @input float minPlanetScale = 5 {"hint":"Safety floor on visible size (scene units). Keeps the tiniest planet from vanishing."}'
     - '// @input float innerRadius = 90 {"hint":"Radius of the innermost orbit (cm)"}'
     - '// @input float radiusStep = 35 {"hint":"How much farther each next planet orbits (cm)"}'
     - '// @input float baseOrbitSpeed = 20 {"hint":"Orbit speed of the innermost planet (deg/sec). Inner planets go faster."}'
+    - '// @input float[] planetYOffsets = {} {"hint":"Per-planet vertical nudge (cm), same order as Planets. Use to lift a model whose pivot sits off-center (e.g. Saturn)."}'
     - '// @input SceneObject popupPanel {"hint":"The popup panel object to show/hide on a hit"}'
     - '// @input Component.Text popupTitle {"hint":"Text3D for the planet name"}'
     - '// @input Component.Text popupBody {"hint":"Text3D for the fact"}'
