@@ -28,6 +28,7 @@
   ScriptInputsHidden:
 <<<<<<< LOCAL
 <<<<<<< LOCAL
+<<<<<<< LOCAL
     baseOrbitSpeed: false
     innerRadius: false
     maxPlanetScale: false
@@ -47,6 +48,9 @@
 =======
     {}
 >>>>>>> REMOTE
+=======
+    {}
+>>>>>>> REMOTE
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -56,6 +60,7 @@
   Attachments:
     []
   DefaultScriptInputs:
+<<<<<<< LOCAL
 <<<<<<< LOCAL
 <<<<<<< LOCAL
     - planets: !<reference.SceneObject[]>
@@ -81,10 +86,15 @@
     -
       {}
 >>>>>>> REMOTE
+=======
+    -
+      {}
+>>>>>>> REMOTE
   ScriptTypes:
     -
       {}
   InputLines:
+<<<<<<< LOCAL
 <<<<<<< LOCAL
 <<<<<<< LOCAL
     - '// @input SceneObject[] planets = {} {"hint":"Drag each planet object here (one entry per planet)"}'
@@ -100,6 +110,9 @@
     - '// @input Component.Text popupTitle {"hint":"Text3D for the planet name"}'
     - '// @input Component.Text popupBody {"hint":"Text3D for the fact"}'
     - '// @input float popupDuration = 5 {"hint":"Seconds the popup stays up"}'
+=======
+    []
+>>>>>>> REMOTE
 =======
     []
 >>>>>>> REMOTE

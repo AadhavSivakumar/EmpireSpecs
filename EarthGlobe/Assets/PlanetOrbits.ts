@@ -33,6 +33,7 @@ export class PlanetOrbits extends BaseScriptComponent {
   @input @hint("Text3D for the planet name") @allowUndefined
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:EarthGlobe/Assets/Scripts/PlanetOrbits.ts
   popupTitle: Text | null = null
   @input @hint("Text3D for the fact") @allowUndefined
@@ -42,6 +43,11 @@ export class PlanetOrbits extends BaseScriptComponent {
   @input @hint("Text3D for the fact") @allowUndefined
   popupBody: Text3D = null
 >>>>>>> parent of 4aa6ab2 (Planets Equal Size):EarthGlobe/Assets/PlanetOrbits.ts
+=======
+  popupTitle: Text3D = null
+  @input @hint("Text3D for the fact") @allowUndefined
+  popupBody: Text3D = null
+>>>>>>> parent of 4aa6ab2 (Planets Equal Size)
 =======
   popupTitle: Text3D = null
   @input @hint("Text3D for the fact") @allowUndefined
