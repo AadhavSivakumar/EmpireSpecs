@@ -26,7 +26,8 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    {}
+    facts: false
+    planetName: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -36,10 +37,12 @@
   Attachments:
     []
   DefaultScriptInputs:
-    -
-      {}
+    - planetName: Planet
+      facts: !<string[]>
+        []
   ScriptTypes:
     -
       {}
   InputLines:
-    []
+    - '// @input string planetName = "Planet" {"hint":"Name shown in the popup"}'
+    - '// @input string[] facts {"hint":"3–5 facts. One is shown at random when the dart sticks."}'
