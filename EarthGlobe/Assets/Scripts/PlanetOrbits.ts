@@ -19,9 +19,9 @@ export class PlanetOrbits extends BaseScriptComponent {
   @input @hint("The popup panel object to show/hide on a hit") @allowUndefined
   popupPanel: SceneObject = null
   @input @hint("Text3D for the planet name") @allowUndefined
-  popupTitle: Text3D = null
+  popupTitle: Text = null
   @input @hint("Text3D for the fact") @allowUndefined
-  popupBody: Text3D = null
+  popupBody: Text = null
   @input @hint("Seconds the popup stays up")
   popupDuration: number = 5
 
