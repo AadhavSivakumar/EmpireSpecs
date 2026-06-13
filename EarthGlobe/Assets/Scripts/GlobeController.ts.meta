@@ -1,0 +1,45 @@
+- !<AssetImportMetadata/bebb4989-1afb-4c26-a08b-f2539f841ffe>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fb57af56-6220-4408-831d-e55f3641980f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fb57af56-6220-4408-831d-e55f3641980f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 11d25bd6-e1dc-4ec0-975d-ed49be5b65e2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/11d25bd6-e1dc-4ec0-975d-ed49be5b65e2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ec57dc9b-8954-45e3-a0cf-3cced0039c30
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    rotationSpeed: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rotationSpeed: !<float> 8.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">GlobeController � Spins the globe around its vertical axis</span>"}'
+    - '// @input float rotationSpeed = 8 {"hint":"Rotation speed in degrees per second"}'

@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/4ec88db0-f9d6-43c0-9bf3-7afa8229905e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fcfb7738-d3af-42c3-a633-94912b0b6367
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fcfb7738-d3af-42c3-a633-94912b0b6367
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6aac3ebc-9646-49b2-aa97-7afce34d1fc2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6aac3ebc-9646-49b2-aa97-7afce34d1fc2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 8ddd24f0-4837-47b9-a5cc-23f148ff64bd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    flipLongitude: false
+    globeObjectName: false
+    hitSound: false
+    longitudeOffset: false
+    missSound: false
+    stickToGlobe: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - globeObjectName: Globe
+      stickToGlobe: true
+      longitudeOffset: !<float> 0.000000
+      flipLongitude: false
+      hitSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      missSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      enableLogging: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">GlobeHit – Dart-to-globe hit detection</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Detects the globe by name, converts the impact point to lat/lng, and sticks the dart to the spinning globe.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target</span>"}'
+    - '// @input string globeObjectName = "Globe" {"hint":"The scene name of the globe object (must match exactly)"}'
+    - '// @input bool stickToGlobe = true {"hint":"Stick the dart to the globe so it rotates along with it"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Calibration</span>"}'
+    - "// @input float longitudeOffset {\"hint\":\"Rotate longitude to match the texture's prime meridian (degrees)\"}"
+    - '// @input bool flipLongitude {"hint":"Flip longitude if east/west come out reversed"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio (optional)</span>"}'
+    - // @input Component.AudioComponent hitSound
+    - // @input Component.AudioComponent missSound
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - // @input bool enableLogging = true
