@@ -26,6 +26,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+<<<<<<< LOCAL
     baseOrbitSpeed: false
     innerRadius: false
     maxPlanetScale: false
@@ -39,6 +40,9 @@
     popupTitle: false
     radiusStep: false
     sizeRelativityExponent: false
+=======
+    {}
+>>>>>>> REMOTE
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -48,6 +52,7 @@
   Attachments:
     []
   DefaultScriptInputs:
+<<<<<<< LOCAL
     - planets: !<reference.SceneObject[]>
         []
       planetScale: !<float> 8.000000
@@ -63,10 +68,15 @@
       popupTitle: !<reference.Text> 00000000-0000-0000-0000-000000000000
       popupBody: !<reference.Text> 00000000-0000-0000-0000-000000000000
       popupDuration: !<float> 5.000000
+=======
+    -
+      {}
+>>>>>>> REMOTE
   ScriptTypes:
     -
       {}
   InputLines:
+<<<<<<< LOCAL
     - '// @input SceneObject[] planets = {} {"hint":"Drag each planet object here (one entry per planet)"}'
     - "// @input float planetScale = 12 {\"hint\":\"Earth's diameter in scene units (cm). Other planets scale relative to this by real diameter ratios.\"}"
     - '// @input float sizeRelativityExponent = 0.5 {"hint":"How strongly to compress real diameter differences. 1 = true scale, 0.5 = square-root (proportional but playable), 0 = all equal."}'
@@ -80,3 +90,6 @@
     - '// @input Component.Text popupTitle {"hint":"Text3D for the planet name"}'
     - '// @input Component.Text popupBody {"hint":"Text3D for the fact"}'
     - '// @input float popupDuration = 5 {"hint":"Seconds the popup stays up"}'
+=======
+    []
+>>>>>>> REMOTE
