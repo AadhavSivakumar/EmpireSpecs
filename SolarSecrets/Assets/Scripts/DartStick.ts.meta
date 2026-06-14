@@ -30,7 +30,7 @@
     enableLogging: false
     enableLoggingLifecycle: false
     hitSound: false
-    scoreBoard: false
+    planetOrbits: false
     tipOffset: false
   ScriptTypesHidden:
     {}
@@ -41,24 +41,24 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - scoreBoard: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+    - planetOrbits: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       hitSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       bounceSound: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
       tipOffset: -0.660000
-      enableLogging: false
+      enableLogging: true
       enableLoggingLifecycle: false
   ScriptTypes:
     -
       {}
   InputLines:
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DartStick – Stick dart to board on straight hit</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Assign the dartboard and audio components. Dart sticks when hit angle is within threshold.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DartStick – Stick dart to a planet and show its fact</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">The dart sticks to any object with a PlanetInfo component, then asks PlanetOrbits to show the fact popup.</span>"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">References</span>"}'
-    - '// @input SceneObject scoreBoard {"hint":"The score board object to stick to"}'
+    - "// @input AssignableType planetOrbits {\"hint\":\"The PlanetOrbits controller that owns the fact popup. Required to reveal a planet's fact when the dart sticks.\"}"
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio</span>"}'
-    - '// @input Component.AudioComponent hitSound {"hint":"Sound to play when dart sticks to board"}'
-    - '// @input Component.AudioComponent bounceSound {"hint":"Sound to play when dart bounces off board"}'
+    - '// @input Component.AudioComponent hitSound {"hint":"Sound to play when the dart sticks to a planet"}'
+    - '// @input Component.AudioComponent bounceSound {"hint":"Sound to play when the dart bounces off a non-planet"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Stick Settings</span>"}'
     - '// @input float tipOffset = -0.66 {"hint":"Offset for tip positioning (default: -0.66)"}'

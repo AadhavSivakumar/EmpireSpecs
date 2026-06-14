@@ -12,6 +12,8 @@
     - !<own> a586106c-c769-4fcf-bc62-118ced5b792d
     - !<own> 184ed8e8-08a5-441d-b19b-164dbe32c069
     - !<own> d2b9f2b5-20f0-493d-8ef0-3affba3163e6
+    - !<own> b0b02bb3-bb7b-4b3a-8158-698ee9138616
+    - !<own> 8e0a7860-dd23-4aa6-af21-b856b5b1473f
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - |
@@ -36,7 +38,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 4b9cc927-3e87-449b-876f-32db52d8538f
   Components:
     - !<own> 00000000-0000-0065-0000-000000000065
     - !<own> e5553c8a-0b7e-4ef4-92d9-3e1318fb82c1
@@ -359,6 +361,24 @@
   ScriptTypes:
     "":
       {}
+- !<ColliderComponent/07526711-3a5b-49d7-b1b5-f323c3b49b64>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<RenderMeshVisual/07caa69e-9ca4-4943-b49e-e6e73b644e6c>
   PrefabRemaps:
     []
@@ -372,8 +392,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> c16a2528-ee43-4fec-b3e8-a4a1ee196eba
-  Mesh: !<reference> ab1d5f27-c070-4eb8-bc84-6871f82fb8f5
+    - !<reference> f46a41e3-e5b4-426b-b622-7d1b5ac51380
+  Mesh: !<reference> 53a7c214-e524-4aa1-9aac-7d7d4bc85657
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -716,7 +736,7 @@
   PrefabRemaps:
     []
   Name: Globe
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 4.236935, z: -120.000000}
@@ -724,7 +744,7 @@
     Scale: {x: 25.000000, y: 25.000000, z: 25.000000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 768e16f4-f821-4cf4-828c-e8c2808d1f92
   Components:
     - !<own> 75662d8f-7f93-4430-bdc9-9a312f29357e
     - !<own> 66f09ee2-f804-4b7f-b6e7-2c736692504c
@@ -741,9 +761,10 @@
     Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> c37482f4-de18-4d71-bec5-5837b3de90c1
   Components:
     - !<own> 9d0edb73-d455-40b6-965c-0d7b0be3d53c
+    - !<own> ffff8c1d-c6ab-4faa-8fc7-7c60209f06bf
 - !<SceneObject/18fab877-dff3-4226-8562-5b090dc40cfd>
   PrefabRemaps:
     []
@@ -759,6 +780,24 @@
     []
   Components:
     - !<own> da3649d5-15e2-4d94-b14c-00a5aead89d4
+- !<ColliderComponent/195ec8f8-0121-4790-9893-25b8736fdc92>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/1a2a50ee-c7d0-4ee9-9743-0c83cb346319>
   PrefabRemaps:
     []
@@ -837,6 +876,29 @@
     - !<own> ceec25e6-8b29-4872-bc75-ee9c1eaa3e8a
   Components:
     []
+- !<BodyComponent/1cac2305-4a6c-4a71-9a4d-c880b3c00750>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<Skin/1cda4214-0829-4ab1-a58e-b4eea16a407a>
   PrefabRemaps:
     []
@@ -1030,6 +1092,21 @@
     - !<own> 52520741-640c-462b-9840-11beb39ae7df
   Components:
     []
+- !<SceneObject/21d9e7fd-fc36-4784-8b20-b128a5453514>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> abb0caaf-eb42-4ada-b170-6c542f4d027e
 - !<SceneObject/22d3847a-1fe4-4b1a-bdd1-482915839e93>
   PrefabRemaps:
     []
@@ -1169,6 +1246,44 @@
           position: !<Vec3> {x: 0.000000, y: 0.000000, z: -50.000000}
       enableLogging: false
       enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<ColliderComponent/276aff46-bc78-4784-991c-e6c886b78f29>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+- !<ScriptComponent/27b05bea-e569-40ba-ae46-74ae9d15e377>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Saturn
+      facts: !<string[]>
+        - "It's famous for its spectacular ring system."
+        - Saturn is less dense than water.
+        - Saturn has over 100 known moons.
   ScriptTypes:
     "":
       {}
@@ -1487,6 +1602,49 @@
     - !<own> c8ad4fad-9d6d-4b76-a39c-002ffe5ceea2
   Components:
     []
+- !<ScriptComponent/319044bf-ea0c-4f66-96e9-cf2f22f48490>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Jupiter
+      facts: !<string[]>
+        - "It's the largest planet in the Solar System."
+        - The Great Red Spot is a giant storm larger than Earth.
+        - Jupiter has more than 90 known moons.
+  ScriptTypes:
+    "":
+      {}
+- !<BodyComponent/3210641b-fdb2-48ec-b676-316e12c96e95>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<SceneObject/34277dc8-f3a2-41c1-b0b4-79b19f0f9f85>
   PrefabRemaps:
     []
@@ -1533,6 +1691,26 @@
     []
   Components:
     - !<own> 8e32aa85-7ef0-4174-8464-cc290df0f886
+- !<ScriptComponent/34b835d4-1390-47c0-9f2b-c1fa73923a79>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Earth
+      facts: !<string[]>
+        - This is the only known planet with life ;)
+        - About 71% of its surface is covered by water.
+        - It has one natural moon.
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/34b9f9ba-895e-44b7-aee1-0f70f0fd9d33>
   PrefabRemaps:
     - 2da1b93e-041b-43b1-872d-9c45172441c4: f6e02e9a-ff79-4b69-7533-66e46c0cca5f
@@ -1570,8 +1748,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 5cf7e9a6-f851-419c-9165-a0effd577ddf
-  Mesh: !<reference> 420913c4-3035-4663-a1b8-1c0db6717092
+    - !<reference> 05745615-c3ad-4cd9-a7fe-0084a67f293b
+  Mesh: !<reference> 143af8f8-3761-478c-9aa1-33f9657939f0
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -1596,6 +1774,21 @@
       receiverLayers: 1
     Material: !<reference> 00000000-0000-0000-0000-000000000000
     HideFromCamera: false
+- !<SceneObject/358fe7b6-219a-4695-bb96-3f80f6c1df02>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bb2ab2e3-8fd8-4fbc-b9b8-e7ffaad2fc7a
 - !<SceneObject/35cdcbff-82ab-44d7-81dd-c7b3f6bc2cdc>
   PrefabRemaps:
     []
@@ -1742,6 +1935,21 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<SceneObject/3af3c30a-179a-4bdc-bd71-a904f7768cf1>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d62f5d37-3d0e-4932-96d3-d2fce0606f7a
 - !<ScriptComponent/3bd31f6d-0590-45af-9687-fbd6a37cdcca>
   PrefabRemaps:
     []
@@ -1957,6 +2165,21 @@
     []
   Components:
     []
+- !<SceneObject/421b3c7d-9aa9-429b-bb9b-e8c2834ce686>
+  PrefabRemaps:
+    []
+  Name: PopupTitle
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d0a0c520-e84c-4d03-8154-87edc39a764b
 - !<SceneObject/42dfa3b1-d172-41b7-a028-d0b1bd47f569>
   PrefabRemaps:
     []
@@ -2119,7 +2342,7 @@
   PrefabRemaps:
     []
   Name: ScoreBoard
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 6.644608, z: -270.000000}
@@ -2258,9 +2481,11 @@
     Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 21d9e7fd-fc36-4784-8b20-b128a5453514
   Components:
     - !<own> 9f408b40-f3fb-4a40-b111-09c69426146a
+    - !<own> 7cc4e2b9-e7b5-44dd-a487-1897270f9a82
+    - !<own> ea023c67-4458-4687-b71e-21117d022df3
 - !<SceneObject/4949f64f-d534-4a0f-b59f-51f4b8efe9b8>
   PrefabRemaps:
     []
@@ -2291,6 +2516,29 @@
     - !<own> 1f60dfba-8d75-49a2-ae5d-142cba7da5a1
   Components:
     []
+- !<BodyComponent/4ab5984b-22e3-4396-bde1-544b4589c5a9>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<SceneObject/4b33fde7-1eb6-4b1e-b435-0c10676d727c>
   PrefabRemaps:
     []
@@ -2456,6 +2704,21 @@
     - !<own> dcb6d2c5-c1ab-48c5-8730-18aaa3afcff3
   Components:
     []
+- !<SceneObject/4b9cc927-3e87-449b-876f-32db52d8538f>
+  PrefabRemaps:
+    []
+  Name: Effects
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
 - !<ScriptComponent/4c59ed7c-d515-4076-b7d0-ca53331be764>
   PrefabRemaps:
     []
@@ -2480,6 +2743,29 @@
   ScriptTypes:
     "":
       {}
+- !<BodyComponent/4d47285c-acc8-4319-a38c-d4cc83a5df14>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<SceneObject/4f9080eb-a1a6-49a4-bcbd-9e458054bb4b>
   PrefabRemaps:
     []
@@ -2525,6 +2811,60 @@
     - !<own> 79902f2f-0701-4abd-bd5a-2e962b1c0008
   Components:
     []
+- !<ScriptComponent/50749689-c820-4a22-81ba-ddd3e36aced3>
+  PrefabRemaps:
+    []
+  Name: PlanetOrbits
+  Enabled: true
+  ScriptAsset: !<reference> aeb75260-d38d-451c-8381-f5b2e73fb72e
+  ScriptInputsDefault:
+    minPlanetScale: true
+    maxPlanetScale: true
+    perspectiveCompensation: true
+    lineUpForTesting: true
+    lineupSpacing: true
+    radiusStep: true
+    baseOrbitSpeed: true
+    popupDuration: true
+    popupHeightOffset: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planets: !<reference.SceneObject[]>
+        - !<reference> 48afa055-c9f8-4012-ac2a-768f7a86af85
+        - !<reference> bc735ad8-10f0-4f27-8732-2d644f98cde5
+        - !<reference> 18b91e09-2c1f-4663-9f34-bdf2acc572d2
+        - !<reference> 6a70b4fd-450a-451e-9f5c-59a731e19ff5
+        - !<reference> 7cf8a4be-2443-4ab6-a636-8f3da39abb82
+        - !<reference> 09e02f9c-1f39-43b3-87cc-395c0d36a0e6
+        - !<reference> 240b2807-2587-491f-ac3c-f23f5da0e193
+        - !<reference> 93d79e97-7e6a-4308-bbe0-fe64536817ea
+      minPlanetScale: !<float> 4.000000
+      maxPlanetScale: !<float> 10.000000
+      sizeContrast: !<float> 6.000000
+      perspectiveCompensation: 0.500000
+      lineUpForTesting: false
+      lineupSpacing: !<float> 8.000000
+      innerRadius: !<float> 50.000000
+      radiusStep: !<float> 35.000000
+      baseOrbitSpeed: !<float> 20.000000
+      planetYOffsets: !<float[]>
+        - 0.000000
+        - 0.000000
+        - 0.000000
+        - 0.000000
+        - 0.000000
+        - 0.000000
+      popupPanel: !<reference.SceneObject> 8e0a7860-dd23-4aa6-af21-b856b5b1473f
+      popupTitle: !<reference.Text> d0a0c520-e84c-4d03-8154-87edc39a764b
+      popupBody: !<reference.Text> b11d82df-2969-4f58-8cf3-2b9a546dc0a8
+      popupDuration: !<float> 5.000000
+      popupHeightOffset: !<float> 15.000000
+      camera: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/509a2738-4d8b-4b24-b372-b12551007669>
   PrefabRemaps:
     []
@@ -2777,7 +3117,7 @@
   PrefabRemaps:
     []
   Name: Physics World
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -2881,6 +3221,26 @@
     []
   Components:
     []
+- !<ScriptComponent/5b77cd47-6af0-47fe-91fd-2d5c231570a9>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Mars
+      facts: !<string[]>
+        - 'Known as the "Red Planet" because of iron-rich dust.'
+        - "It has the largest volcano in the Solar System, Olympus Mons."
+        - "Mars has two small moons: Phobos and Deimos."
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/5d26bce1-7f54-437d-aaaf-e39e095dbcd5>
   PrefabRemaps:
     []
@@ -2926,6 +3286,24 @@
     []
   Components:
     []
+- !<ColliderComponent/5ed682b4-d38f-4c03-805b-598e95fc83bc>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/5f06dc2d-4591-4073-b8b0-03be4d1b05ed>
   PrefabRemaps:
     []
@@ -3252,7 +3630,7 @@
   RotationTension: 30.000000
   ForceCompound: false
   Intangible: false
-  ShowCollider: false
+  ShowCollider: true
 - !<ScriptComponent/670b913b-895b-42f4-994d-22c2ceadbe7f>
   PrefabRemaps:
     []
@@ -3287,14 +3665,17 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: -1.050000, y: -1.050000, z: 0.000000}
+    Position: {x: -1.050000, y: 0.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 779c20ec-b8c6-442e-901c-2155e6409076
+    - !<own> ca7b1ca3-a5f9-4c1c-9ef7-ec3d4d75e239
   Components:
     - !<own> 8b487f60-a658-4bd1-9443-ef48dcc27aa5
+    - !<own> 07526711-3a5b-49d7-b1b5-f323c3b49b64
+    - !<own> 4ab5984b-22e3-4396-bde1-544b4589c5a9
 - !<SceneObject/6812f9ce-cbcc-4380-b9a1-41acf01a4d9a>
   PrefabRemaps:
     []
@@ -3397,9 +3778,11 @@
     Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> cb4f925e-3277-4290-8bec-89373ceeea3a
   Components:
     - !<own> 07caa69e-9ca4-4943-b49e-e6e73b644e6c
+    - !<own> 91816636-bcc5-4efa-8b9e-11bd7ca4bcd9
+    - !<own> 77dfce6e-2be0-4bad-8a36-e22025cb4546
 - !<SceneObject/6d2a7fa5-f096-498d-b047-8f0ee9b1806f>
   PrefabRemaps:
     []
@@ -3523,8 +3906,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> cf0a0ae7-01c0-49f0-992f-16bb564c6bc9
-  Mesh: !<reference> ce8d4a29-ae25-4fc4-b499-dc2921be4a37
+    - !<reference> a9f9513a-795e-4d8c-84e4-6d5e0980d63d
+  Mesh: !<reference> 770995df-5d88-4913-a399-fd715beeab00
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -3562,8 +3945,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> b77263e9-d6cd-46d1-9cec-6aac970ad217
-  Mesh: !<reference> bfcb3fc5-86d1-4b6a-b030-68b2a4e0f083
+    - !<reference> 8658e3f0-7a8d-45ba-a53d-0f915bef4986
+  Mesh: !<reference> e54ca8f7-73d5-44d9-97d0-3a5e52f52748
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -3709,6 +4092,21 @@
   BlendNormals: false
   BlendShapes:
     LeftHandScaleShape: 0.000000
+- !<SceneObject/768e16f4-f821-4cf4-828c-e8c2808d1f92>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> fc774f3c-e006-4aa6-86b8-a5e0ba7d49a9
 - !<SceneObject/779c20ec-b8c6-442e-901c-2155e6409076>
   PrefabRemaps:
     []
@@ -3724,6 +4122,29 @@
     []
   Components:
     - !<own> d32256d9-6933-479d-86b5-34e067b0fbef
+- !<BodyComponent/77dfce6e-2be0-4bad-8a36-e22025cb4546>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<SceneObject/78a4232a-3764-4e12-bd20-7fbf83acd36e>
   PrefabRemaps:
     []
@@ -3870,6 +4291,7 @@
   Enabled: true
   ScriptAsset: !<reference> f04b4909-99c8-4a1a-b7d3-5bac1ab3381e
   ScriptInputsDefault:
+    planetOrbits: true
     tipOffset: true
     enableLogging: true
     enableLoggingLifecycle: true
@@ -3877,15 +4299,33 @@
     {}
   ScriptInputs:
     "":
-      scoreBoard: !<reference.SceneObject> 462c2dcb-0926-4ee0-a5f2-dfdd33c93458
+      planetOrbits: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       hitSound: !<reference.AudioComponent> d3e5b34d-91c7-4351-9e89-90093f9b1f04
       bounceSound: !<reference.AudioComponent> 30e50526-6458-4880-abd5-52f66dd8895b
       tipOffset: -0.660000
-      enableLogging: false
+      enableLogging: true
       enableLoggingLifecycle: false
   ScriptTypes:
     "":
       {}
+- !<ColliderComponent/7cc4e2b9-e7b5-44dd-a487-1897270f9a82>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<RenderMeshVisual/7cd3c496-0141-4db7-a4a8-6f48d28c8a29>
   PrefabRemaps:
     []
@@ -3918,9 +4358,11 @@
     Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> e0b3c273-2552-4ef9-bfea-419c0126b915
   Components:
     - !<own> 7351c25a-2370-4445-9e07-1b98c3bedd88
+    - !<own> 195ec8f8-0121-4790-9893-25b8736fdc92
+    - !<own> 1cac2305-4a6c-4a71-9a4d-c880b3c00750
 - !<RenderMeshVisual/7f4b969d-9bdb-4c82-8220-c048e439de4e>
   PrefabRemaps:
     []
@@ -4073,7 +4515,7 @@
   PrefabRemaps:
     []
   Name: Sun
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -4112,8 +4554,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> eea29734-69c0-4fd2-917d-a0d5c8e8ba5a
-  Mesh: !<reference> cff09d1e-128e-4617-9693-e77e53450b8b
+    - !<reference> 32803609-217b-4bdc-8cac-b554d5efdf31
+  Mesh: !<reference> 088a9879-6965-432b-8494-4f5596b73e28
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -4151,8 +4593,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 789533db-b8e5-4e96-ab2e-908547706aa7
-  Mesh: !<reference> 83f533c7-83ce-49b0-b0af-1d5942dcafd3
+    - !<reference> 6febe9ef-f161-4e52-83bd-a9ff2faeec62
+  Mesh: !<reference> e54ca8f7-73d5-44d9-97d0-3a5e52f52748
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -4297,6 +4739,22 @@
     - !<own> 7f8d351d-ed3f-456a-a4e6-ff6156214d46
   Components:
     []
+- !<SceneObject/8e0a7860-dd23-4aa6-af21-b856b5b1473f>
+  PrefabRemaps:
+    []
+  Name: Popup
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 421b3c7d-9aa9-429b-bb9b-e8c2834ce686
+    - !<own> d9b9a206-6d25-4fb5-9e05-922387ec74e8
+  Components:
+    - !<own> faca14ce-ab92-4a42-837b-0c7a509376f1
 - !<RenderMeshVisual/8e32aa85-7ef0-4174-8464-cc290df0f886>
   PrefabRemaps:
     []
@@ -4317,6 +4775,21 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<SceneObject/8e47da32-e414-44e9-ac1b-469ba68dce8c>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a0618f58-8452-4f7f-9242-f228540f6caf
 - !<SceneObject/8e900a2e-b14a-4bba-af9c-fe04ba5985b7>
   PrefabRemaps:
     []
@@ -4885,6 +5358,24 @@
     []
   Components:
     []
+- !<ColliderComponent/91816636-bcc5-4efa-8b9e-11bd7ca4bcd9>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/91bc0369-79d8-4ce8-8e55-e0c84e055749>
   PrefabRemaps:
     []
@@ -4965,9 +5456,11 @@
     Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 3af3c30a-179a-4bdc-bd71-a904f7768cf1
   Components:
     - !<own> cfe30d7f-5f5c-4fa3-8c08-683e4684446c
+    - !<own> 276aff46-bc78-4784-991c-e6c886b78f29
+    - !<own> b6432c3c-a00f-46fc-8794-0b4aaa52c6ac
 - !<SceneObject/94970765-4881-45e6-9a03-afca0e38f481>
   PrefabRemaps:
     []
@@ -5199,8 +5692,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> a0afcafa-619f-44f3-b5a4-4fcd4888d8d4
-  Mesh: !<reference> cb3f0612-540e-4ff3-93b4-15a45fedea00
+    - !<reference> 24d5a6ba-5ad9-415b-95ab-5ef2571e9816
+  Mesh: !<reference> eae29791-bbb3-4dd2-8cc4-4729287a19ee
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -5283,8 +5776,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 443b96de-39fa-4e7c-a33e-f66a29178738
-  Mesh: !<reference> bdfa5436-6c05-4b2f-867c-f09f0a5cc643
+    - !<reference> 440d519e-cbef-4c8f-8e05-72a24a261faa
+  Mesh: !<reference> d6701b9d-df3e-4309-b23e-e0237c592366
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -5348,6 +5841,26 @@
     - !<own> 1fd22abe-45bb-49af-b081-99336530ff74
   Components:
     - !<own> b1374cfc-5cda-4db8-8628-22f0e79f98da
+- !<ScriptComponent/a0618f58-8452-4f7f-9242-f228540f6caf>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Uranus
+      facts: !<string[]>
+        - "It rotates on its side, tilted about 98°."
+        - Its blue-green color comes from methane in the atmosphere.
+        - A season on Uranus lasts about 21 Earth years.
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/a0c4b6ab-d241-4a42-88d3-9a609e4074b1>
   PrefabRemaps:
     []
@@ -5621,6 +6134,20 @@
   ScriptTypes:
     "":
       {}
+- !<PostEffectVisual/a8708b94-b03a-4e2a-b1df-c34d98abae13>
+  PrefabRemaps:
+    []
+  Name: Post Effect
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 99f73515-7313-424d-9e38-6d33ca2108f8
 - !<SceneObject/a9ac8529-0cb9-4563-95bf-e14b517bb88a>
   PrefabRemaps:
     []
@@ -5640,7 +6167,7 @@
   PrefabRemaps:
     []
   Name: Moon
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 2.200000, y: 0.000000, z: 0.000000}
@@ -5701,6 +6228,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/abb0caaf-eb42-4ada-b170-6c542f4d027e>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Mercury
+      facts: !<string[]>
+        - "Mercury is the closest planet to the sun. In this case, to you!"
+        - Mercury orbits decently fast. A year on mercury is just 88 Earth days.
+        - "Mercury has no atmosphere, causing extreme temperature swings"
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/acadfcd8-3e26-4509-9c8d-92393111b029>
   PrefabRemaps:
     []
@@ -6185,6 +6732,21 @@
     - !<own> 29b4df13-c42d-40ff-b953-f9063266c67f
   Components:
     []
+- !<SceneObject/b0b02bb3-bb7b-4b3a-8158-698ee9138616>
+  PrefabRemaps:
+    []
+  Name: SolarSystem
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> bbe741e2-4185-4302-9a18-bf43e3685a0f
+  Components:
+    - !<own> a8708b94-b03a-4e2a-b1df-c34d98abae13
 - !<SceneObject/b0e095fd-7cba-4218-b80f-88519e67dcf7>
   PrefabRemaps:
     []
@@ -6215,6 +6777,87 @@
     - !<own> f874c54f-66e2-4644-b58b-d4ba13cf7296
   Components:
     []
+- !<Text/b11d82df-2969-4f58-8cf3-2b9a546dc0a8>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: Text
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
 - !<ScriptComponent/b1374cfc-5cda-4db8-8628-22f0e79f98da>
   PrefabRemaps:
     []
@@ -6268,6 +6911,29 @@
     - !<own> 7b036018-097d-4b40-81d6-5e7002465f0d
   Components:
     []
+- !<BodyComponent/b6432c3c-a00f-46fc-8794-0b4aaa52c6ac>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<RenderMeshVisual/b67dcb25-cf61-49e4-9061-15e827190be6>
   PrefabRemaps:
     []
@@ -6496,6 +7162,26 @@
     - !<own> f2e659b0-7ad1-4de9-8341-eb7c9ce35d57
   Components:
     []
+- !<ScriptComponent/bb2ab2e3-8fd8-4fbc-b9b8-e7ffaad2fc7a>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Venus
+      facts: !<string[]>
+        - The hottest planet in the Solar System.
+        - Venus rotates backward compared to most planets.
+        - Its thick atmosphere is mostly carbon dioxide.
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/bb353fd3-f2dc-4e60-8d79-ef35e496cec5>
   PrefabRemaps:
     []
@@ -6526,6 +7212,21 @@
     - !<own> c9c5ce72-22a4-4dd5-acb2-408514862c41
   Components:
     []
+- !<SceneObject/bbe741e2-4185-4302-9a18-bf43e3685a0f>
+  PrefabRemaps:
+    []
+  Name: PlanetOrbits
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 50749689-c820-4a22-81ba-ddd3e36aced3
 - !<SceneObject/bc735ad8-10f0-4f27-8732-2d644f98cde5>
   PrefabRemaps:
     []
@@ -6538,9 +7239,11 @@
     Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
     HasSegmentScaleCompensation: false
   Children:
-    []
+    - !<own> 358fe7b6-219a-4695-bb96-3f80f6c1df02
   Components:
     - !<own> 8a39ffb0-62a4-4e5f-ba54-7abbde881553
+    - !<own> 5ed682b4-d38f-4c03-805b-598e95fc83bc
+    - !<own> 4d47285c-acc8-4319-a38c-d4cc83a5df14
 - !<SceneObject/bd88cf24-1d04-42e4-803f-157d7bfb135a>
   PrefabRemaps:
     []
@@ -6661,6 +7364,21 @@
     - !<own> 51233e3b-0fb8-451e-9609-3719c96e21f6
   Components:
     []
+- !<SceneObject/c37482f4-de18-4d71-bec5-5837b3de90c1>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 34b835d4-1390-47c0-9f2b-c1fa73923a79
 - !<Text/c417ef82-78fa-416c-a9e3-a541ec8b0dba>
   PrefabRemaps:
     []
@@ -7069,6 +7787,21 @@
     []
   Components:
     []
+- !<SceneObject/ca7b1ca3-a5f9-4c1c-9ef7-ec3d4d75e239>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 27b05bea-e569-40ba-ae46-74ae9d15e377
 - !<SceneObject/cb157664-6d36-42f0-9493-0347e0c7f580>
   PrefabRemaps:
     []
@@ -7084,6 +7817,21 @@
     - !<own> 3ebd6139-8c57-47de-9fcf-ddb29b173c60
   Components:
     []
+- !<SceneObject/cb4f925e-3277-4290-8bec-89373ceeea3a>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5b77cd47-6af0-47fe-91fd-2d5c231570a9
 - !<SceneObject/cb6ddac8-40c8-4e3d-a3f8-c9d1c5afc4ad>
   PrefabRemaps:
     []
@@ -7175,12 +7923,15 @@
   LocalTransform: !<TransformEntity>
     Position: {x: -1.500000, y: 0.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.300000, y: 0.300000, z: 0.300000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 9a7098dd-3bb6-4b80-a6c5-61fb2eabb31d
+    - !<own> 8e47da32-e414-44e9-ac1b-469ba68dce8c
   Components:
     - !<own> 3518bbc2-e187-4a46-a777-65d20fa11e10
+    - !<own> f830a7d8-0a47-41aa-b7be-d8351f92494f
+    - !<own> 3210641b-fdb2-48ec-b676-316e12c96e95
 - !<SceneObject/ce66607b-ae13-4a9d-9be5-07abe7974993>
   PrefabRemaps:
     []
@@ -7273,8 +8024,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> cd5fdbc7-a110-4b08-ad8e-fc0a6b4582bb
-  Mesh: !<reference> db694887-7b32-48c0-8297-92a17f875ab3
+    - !<reference> 5c526bac-f476-4adb-aeea-34f797f270d3
+  Mesh: !<reference> be4fd9e3-52a1-48c3-a8ce-84716a44790b
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -7314,6 +8065,87 @@
     []
   Components:
     []
+- !<Text/d0a0c520-e84c-4d03-8154-87edc39a764b>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: Text
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
 - !<SceneObject/d23d5f98-8b30-4b0d-9525-c5fa0b103b8f>
   PrefabRemaps:
     []
@@ -7473,8 +8305,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 8954fcd0-f0ac-4d7f-b2d2-aa18c170cfa0
-  Mesh: !<reference> 8043f1bc-ad61-4ecb-bedb-5845bee92f4b
+    - !<reference> 69ca319b-0b7d-496b-9b98-8b23ddbee1ab
+  Mesh: !<reference> 2824864c-9cda-4cd8-855a-61903303808c
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -7585,8 +8417,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 491da1fc-1768-4f5d-bf1d-2601072347bf
-  Mesh: !<reference> 1d592f43-1a04-44b4-8333-80b7a1065577
+    - !<reference> 8954fb7f-55f9-4253-9c17-d692143e875b
+  Mesh: !<reference> 4a440926-5628-4a06-a271-63dfdf429d3f
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -7631,6 +8463,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/d62f5d37-3d0e-4932-96d3-d2fce0606f7a>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Neptune
+      facts: !<string[]>
+        - "It's the farthest known major planet from the Sun. Sorry, Pluto."
+        - Neptune has the fastest winds in the Solar System.
+        - It was discovered through mathematical predictions before being directly observed.
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/d655bc06-0384-4714-854d-46eb6b64d131>
   PrefabRemaps:
     []
@@ -7767,6 +8619,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/d9b9a206-6d25-4fb5-9e05-922387ec74e8>
+  PrefabRemaps:
+    []
+  Name: PopupBody
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -4.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b11d82df-2969-4f58-8cf3-2b9a546dc0a8
 - !<SceneObject/da202686-7beb-437d-a785-9482d8970557>
   PrefabRemaps:
     []
@@ -7944,6 +8811,21 @@
     - !<own> 1581c26f-a61a-423d-867c-294ae0db6e52
   Components:
     []
+- !<SceneObject/e0b3c273-2552-4ef9-bfea-419c0126b915>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 319044bf-ea0c-4f66-96e9-cf2f22f48490
 - !<SceneObject/e1a13826-d513-4b5d-b140-6bfd75fb5907>
   PrefabRemaps:
     []
@@ -8121,6 +9003,29 @@
     []
   Name: Audio Listener
   Enabled: true
+- !<BodyComponent/ea023c67-4458-4687-b71e-21117d022df3>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000
 - !<ScriptComponent/ea2f79aa-80be-49a6-b294-29e6565784af>
   PrefabRemaps:
     []
@@ -8351,6 +9256,24 @@
     - !<own> b142c002-e0a7-46af-8484-47169c49c452
   Components:
     []
+- !<ColliderComponent/f830a7d8-0a47-41aa-b7be-d8351f92494f>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: false
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/f874c54f-66e2-4644-b58b-d4ba13cf7296>
   PrefabRemaps:
     []
@@ -8422,6 +9345,20 @@
     Fingers_length: 0.000000
     Thumb_inflate: 0.000000
     Thumb_length: 0.000000
+- !<PostEffectVisual/faca14ce-ab92-4a42-837b-0c7a509376f1>
+  PrefabRemaps:
+    []
+  Name: Post Effect
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> dfd36d59-d50f-4d6a-8268-999999095f7c
 - !<SceneObject/face9006-042a-4ec5-9a3b-2adfddb6a88d>
   PrefabRemaps:
     []
@@ -8494,6 +9431,26 @@
     - !<own> ae833435-1ff4-414b-b627-a1ed15df52d4
   Components:
     []
+- !<ScriptComponent/fc774f3c-e006-4aa6-86b8-a5e0ba7d49a9>
+  PrefabRemaps:
+    []
+  Name: PlanetInfo
+  Enabled: true
+  ScriptAsset: !<reference> 0fa7cedd-df80-438f-8f13-18c1c1ae1bd1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      planetName: Earth
+      facts: !<string[]>
+        - Fact 1
+        - Fact 2
+        - Fact 3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/fd8d081d-137c-4d91-959d-025ee5fc4f80>
   PrefabRemaps:
     []
@@ -8522,8 +9479,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> f0e9aa76-c4a7-4f97-b00d-b8662f696ee3
-  Mesh: !<reference> 7fa49e55-a252-4e8e-8a8b-4fa14a7181f0
+    - !<reference> 1f1ba2d0-6b9e-4ac5-a132-3aad6a6121f4
+  Mesh: !<reference> 2824864c-9cda-4cd8-855a-61903303808c
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -8608,3 +9565,26 @@
     - !<own> 86197aaf-f40d-4453-8476-2027b4a29237
   Components:
     []
+- !<BodyComponent/ffff8c1d-c6ab-4faa-8fc7-7c60209f06bf>
+  PrefabRemaps:
+    []
+  Name: Physics Body
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 1.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> 00000000-0000-0000-0000-000000000000
+  OverlapFilter: !<reference> 00000000-0000-0000-0000-000000000000
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
+  Dynamic: false
+  BodySetting: Density
+  BodySettingValue: 1.000000
+  Damping: 0.000000
+  AngularDamping: 0.000000

@@ -26,31 +26,23 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-<<<<<<< LOCAL
-<<<<<<< LOCAL
-<<<<<<< LOCAL
     baseOrbitSpeed: false
+    camera: false
     innerRadius: false
+    lineUpForTesting: false
+    lineupSpacing: false
     maxPlanetScale: false
     minPlanetScale: false
-    planetScale: false
+    perspectiveCompensation: false
     planetYOffsets: false
     planets: false
     popupBody: false
     popupDuration: false
+    popupHeightOffset: false
     popupPanel: false
     popupTitle: false
     radiusStep: false
-    sizeRelativityExponent: false
-=======
-    {}
->>>>>>> REMOTE
-=======
-    {}
->>>>>>> REMOTE
-=======
-    {}
->>>>>>> REMOTE
+    sizeContrast: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -60,15 +52,14 @@
   Attachments:
     []
   DefaultScriptInputs:
-<<<<<<< LOCAL
-<<<<<<< LOCAL
-<<<<<<< LOCAL
     - planets: !<reference.SceneObject[]>
         []
-      planetScale: !<float> 8.000000
-      sizeRelativityExponent: 0.350000
-      maxPlanetScale: !<float> 20.000000
-      minPlanetScale: !<float> 6.000000
+      minPlanetScale: !<float> 4.000000
+      maxPlanetScale: !<float> 10.000000
+      sizeContrast: 0.500000
+      perspectiveCompensation: 0.500000
+      lineUpForTesting: false
+      lineupSpacing: !<float> 8.000000
       innerRadius: !<float> 90.000000
       radiusStep: !<float> 35.000000
       baseOrbitSpeed: !<float> 20.000000
@@ -78,30 +69,19 @@
       popupTitle: !<reference.Text> 00000000-0000-0000-0000-000000000000
       popupBody: !<reference.Text> 00000000-0000-0000-0000-000000000000
       popupDuration: !<float> 5.000000
-=======
-    -
-      {}
->>>>>>> REMOTE
-=======
-    -
-      {}
->>>>>>> REMOTE
-=======
-    -
-      {}
->>>>>>> REMOTE
+      popupHeightOffset: !<float> 15.000000
+      camera: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-<<<<<<< LOCAL
-<<<<<<< LOCAL
-<<<<<<< LOCAL
-    - '// @input SceneObject[] planets = {} {"hint":"Drag each planet object here (one entry per planet)"}'
-    - "// @input float planetScale = 12 {\"hint\":\"Earth's diameter in scene units (cm). Other planets scale relative to this by real diameter ratios.\"}"
-    - '// @input float sizeRelativityExponent = 0.5 {"hint":"How strongly to compress real diameter differences. 1 = true scale, 0.5 = square-root (proportional but playable), 0 = all equal."}'
-    - '// @input float maxPlanetScale = 60 {"hint":"Safety ceiling on visible size (scene units). Set high so planets stay distinct; lower only if a giant is too big."}'
-    - '// @input float minPlanetScale = 5 {"hint":"Safety floor on visible size (scene units). Keeps the tiniest planet from vanishing."}'
+    - '// @input SceneObject[] planets {"hint":"Drag each planet object here, in order: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune."}'
+    - '// @input float minPlanetScale = 4 {"hint":"Size of the SMALLEST planet (scene units). Raise this if the little planets are too hard to hit."}'
+    - '// @input float maxPlanetScale = 10 {"hint":"Size of the BIGGEST planet (scene units). Lower this if the gas giants are too big."}'
+    - '// @input float sizeContrast = 0.5 {"hint":"How much real diameter differences show. 1 = true proportions (giants dwarf the rest), lower = compress giants toward the small planets. 0.5 is a good playable middle."}'
+    - "// @input float perspectiveCompensation = 0.5 {\"hint\":\"Counteract distance so farther planets don't look too small and closer ones too big (e.g. Jupiter vs the farther Saturn). 0 = off (true size, closer looks bigger), ~0.5 natural, 1 = full compensation.\"}"
+    - '// @input bool lineUpForTesting {"hint":"TESTING: line planets up in a static row at equal distance (no orbit, no perspective) so you can compare true relative sizes. Turn OFF for the real game."}'
+    - '// @input float lineupSpacing = 8 {"hint":"Gap between planets when lined up for testing (scene units)."}'
     - '// @input float innerRadius = 90 {"hint":"Radius of the innermost orbit (cm)"}'
     - '// @input float radiusStep = 35 {"hint":"How much farther each next planet orbits (cm)"}'
     - '// @input float baseOrbitSpeed = 20 {"hint":"Orbit speed of the innermost planet (deg/sec). Inner planets go faster."}'
@@ -110,12 +90,5 @@
     - '// @input Component.Text popupTitle {"hint":"Text3D for the planet name"}'
     - '// @input Component.Text popupBody {"hint":"Text3D for the fact"}'
     - '// @input float popupDuration = 5 {"hint":"Seconds the popup stays up"}'
-=======
-    []
->>>>>>> REMOTE
-=======
-    []
->>>>>>> REMOTE
-=======
-    []
->>>>>>> REMOTE
+    - '// @input float popupHeightOffset = 15 {"hint":"How high above the hit planet the popup appears (scene units)"}'
+    - '// @input SceneObject camera {"hint":"The camera / user head. The popup rotates around its vertical axis to face this."}'

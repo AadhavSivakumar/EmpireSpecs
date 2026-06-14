@@ -83,6 +83,7 @@
   Enabled: true
   ScriptAsset: !<reference> f04b4909-99c8-4a1a-b7d3-5bac1ab3381e
   ScriptInputsDefault:
+    planetOrbits: true
     tipOffset: true
     enableLogging: true
     enableLoggingLifecycle: true
@@ -90,11 +91,11 @@
     {}
   ScriptInputs:
     "":
-      scoreBoard: !<reference.SceneObject> 462c2dcb-0926-4ee0-a5f2-dfdd33c93458
+      planetOrbits: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       hitSound: !<reference.AudioComponent> d3e5b34d-91c7-4351-9e89-90093f9b1f04
       bounceSound: !<reference.AudioComponent> 30e50526-6458-4880-abd5-52f66dd8895b
       tipOffset: -0.660000
-      enableLogging: false
+      enableLogging: true
       enableLoggingLifecycle: false
   ScriptTypes:
     "":

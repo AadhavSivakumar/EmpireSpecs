@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/70910379-dc55-4ddf-b257-5bb432457fbc>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 06fc1124-d71a-485f-ac33-b20c9cecda49
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 06fc1124-d71a-485f-ac33-b20c9cecda49
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b9ca787f-99ac-410a-a747-454fedfef967
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b9ca787f-99ac-410a-a747-454fedfef967>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b70b43e2-5022-42f3-be6a-52c49b362bb5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    distance: false
+    drop: false
+    followSpeed: false
+    side: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camera: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distance: !<float> 35.000000
+      drop: !<float> 25.000000
+      side: !<float> 15.000000
+      followSpeed: 0.250000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject camera {"hint":"The camera / user head this should stay in front of."}'
+    - '// @input float distance = 35 {"hint":"Distance in front of the user (scene units)."}'
+    - '// @input float drop = 25 {"hint":"How far below eye level it sits (scene units, positive = lower)."}'
+    - '// @input float side = 15 {"hint":"Sideways offset (scene units, positive = right, negative = left)."}'
+    - '// @input float followSpeed = 0.25 {"hint":"Follow responsiveness per frame. 1 = snap instantly, lower = smoother/laggier."}'
