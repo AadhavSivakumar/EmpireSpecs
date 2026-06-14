@@ -1,0 +1,38 @@
+- !<ObjectPrefab/5e3c7f94-05ef-4a83-ad04-9caa81832cb1>
+  PackagePath: ""
+  objects:
+    - !<own> f7d868a6-a99f-4646-8693-8f83da33cf27
+  LazyLoading: false
+  RetainAssets: true
+- !<ScriptComponent/cb336ae1-1155-4ad7-b757-37c8ed0022da>
+  PrefabRemaps:
+    []
+  Name: LoadingSpinner
+  Enabled: true
+  ScriptAsset: !<reference> 7e4ae376-5cfc-408e-a553-65b3764dcebd
+  ScriptInputsDefault:
+    renderOrder: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      renderOrder: 0
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/f7d868a6-a99f-4646-8693-8f83da33cf27>
+  PrefabRemaps:
+    - cb336ae1-1155-4ad7-b757-37c8ed0022da: 1af70718-f037-4120-bd20-6a0d968017c8
+    - f7d868a6-a99f-4646-8693-8f83da33cf27: 16c7dc0f-10ad-46d6-83f2-45e7071e32d4
+  Name: LoadingSpinner
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 20.000000, y: 20.000000, z: 20.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> cb336ae1-1155-4ad7-b757-37c8ed0022da

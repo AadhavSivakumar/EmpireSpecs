@@ -53,6 +53,14 @@ export class PlanetOrbits extends BaseScriptComponent {
   @input @hint("The camera / user head. The popup rotates around its vertical axis to face this.") @allowUndefined
   camera: SceneObject = null
 
+  // ── AI facts (Remote Service Gateway / OpenAI) ──
+  @input @hint("OFF = offline PlanetInfo facts only. ON = ask the LLM each hit (1-3 sentences), falling back to the offline fact if it doesn't answer within Ai Timeout.")
+  useAI: boolean = false
+  @input @hint("Seconds to wait for the AI before falling back to the offline fact.")
+  aiTimeout: number = 4
+  @input @hint("Drag the object running your OpenAI script (ExampleOAICalls) here. PlanetOrbits calls its generatePlanetFact() on each hit.") @allowUndefined
+  aiCaller: SceneObject = null
+
   // Real mean diameters (km), same order the Planets list expects.
   private readonly planetDiametersKm: number[] = [
     4879,   // Mercury
@@ -68,6 +76,7 @@ export class PlanetOrbits extends BaseScriptComponent {
   private angles: number[] = []
   private planetScales: number[] = []
   private paused: boolean = false
+  private popupToken: number = 0
 
   // Singleton so spawned darts can reach the popup without an inspector reference.
   private static instance: PlanetOrbits
@@ -207,16 +216,53 @@ export class PlanetOrbits extends BaseScriptComponent {
       this.popupPanel.getTransform().setWorldPosition(new vec3(pos.x, pos.y + lift, pos.z))
     }
 
-    print(`PlanetOrbits.showFact: name="${name}" fact="${fact}" panel=${!!this.popupPanel} title=${!!this.popupTitle} body=${!!this.popupBody}`)
+    // Each popup gets a token so a slow AI reply only updates the popup still showing.
+    this.popupToken++
+    const token = this.popupToken
 
-    this.showFact(name, fact)
+    const caller = this.getAICaller()
+    if (!this.useAI || !caller) {
+      this.showFact(name, fact) // offline-only (toggle off, or no AI caller wired)
+      return
+    }
+
+    // AI mode: show name + a loading dash (not a fact), then fill in ONE fact —
+    // the AI reply or, if it doesn't answer within aiTimeout, the offline fact.
+    this.showFact(name, "…")
+
+    let settled = false
+    const finish = (text: string) => {
+      if (settled || token !== this.popupToken) return
+      settled = true
+      if (this.popupBody) this.popupBody.text = text
+    }
+
+//CHANGED: removed
+    const timeout = this.createEvent("DelayedCallbackEvent")
+    timeout.bind(() => finish(fact)) // fall back to the offline fact
+    timeout.reset(this.aiTimeout)
+
+//CHANGED: Removed 
+    caller.generatePlanetFact(name)
+      .then((aiFact: string) => finish(aiFact && aiFact.length > 0 ? aiFact : fact))
+      .catch((err: any) => { print("PlanetOrbits: AI fact failed, using offline. " + err); finish(fact)})
+  }
+
+  /** Find the OpenAI caller component (duck-typed) on the assigned aiCaller object. */
+  private getAICaller(): any {
+    if (!this.aiCaller) return null
+    const scripts = this.aiCaller.getComponents("Component.ScriptComponent") as any[]
+    for (let i = 0; i < scripts.length; i++) {
+      if (scripts[i] && typeof scripts[i].generatePlanetFact === "function") return scripts[i]
+    }
+    return null
   }
 
   /** Best-effort PlanetInfo lookup (object + descendants), typed first then duck-typed. */
   private findPlanetInfo(obj: SceneObject): any {
     if (!obj) return null
-    const typed = obj.getComponent(PlanetInfo.getTypeName())
-    if (typed) return typed
+    // const typed = obj.getComponent(PlanetInfo.getTypeName())
+    // if (typed) return typed
     const scripts = obj.getComponents("Component.ScriptComponent") as any[]
     for (let s = 0; s < scripts.length; s++) {
       const comp = scripts[s]

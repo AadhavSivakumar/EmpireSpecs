@@ -1,0 +1,37 @@
+- !<AssetImportMetadata/e9f38778-3efe-4bc1-8cf3-d98a79d7ce5a>
+  ImportedAssetIds:
+    366aa272-c6d1-45f3-aa95-9989ba5c9e52: !<reference> c77aad5f-9003-4e2e-8999-e400db9d1258
+    e87ad185-2ae9-4947-a7d4-54dfebed641c: !<reference> 2b4cd9d7-776a-4267-af63-6a652fb1e6e4
+    aa2d996f-c486-403f-b442-75215fdcda50: !<reference> 4cd448d9-e737-442e-af32-41f964381a86
+    9f837073-6bb2-41f7-8e96-af85663ce0fb: !<reference> 2d728a26-ce18-44d5-bbeb-33ebcbb6cdc3
+    5adc01b2-c06a-46e6-8a2c-6ebd55b5acaa: !<reference> b6c3f481-4fa5-44ec-9a25-f21b17e3951e
+    710e68f7-8531-49e5-a553-1cd7a1793f4f: !<reference> f131ea9b-500d-4f5e-ae6f-908084a694d9
+    cca517ec-d627-4e6c-b4f3-13e24020dae5: !<reference> 29306cbd-a11c-4728-8e82-e2a32a5a8b7a
+    97eb9a1b-599c-46d1-ab3d-b95c09e5d05e: !<reference> 44bb51c6-d12b-44c5-92a8-7fc0ab7286d8
+    c0f69fab-04d1-4384-b159-12e205ef7828: !<reference> 1b7b3172-f551-4411-bd80-e8255a158290
+    478b4601-48c7-47d3-b7d0-0cac11264152: !<reference> 079a92a1-4253-4410-a6af-72f9e668cbdc
+    b7677b11-1584-4c6f-bb3e-383844737dd0: !<reference> 01c00db7-06ee-4031-ad10-8dec211a8923
+    16bf271e-c46c-4f46-4af0-000c55db0632: !<reference> 093bd519-868b-4cb0-8d16-2236676fdf40
+    228225a4-d4ac-4c98-42e2-1c2da05453f4: !<reference> 79100085-470b-46de-9f6a-7376ca89def1
+    af9db7f4-3286-40d5-a44c-dbb14ef82f5e: !<reference> 467e15a7-94d4-4817-9ce0-58582168d816
+    228225a4-d4ac-4c98-bd1d-e3d25fabac0b: !<reference> 7c8a0a40-c3e7-4741-b190-074eec49befd
+    16bf271e-c46c-4f46-b50f-fff3aa24f9cd: !<reference> fbb09305-4ffd-4ed3-afc5-b682013026de
+    6d55f3d2-8335-4cfc-85d9-bf11005ce5bf: !<reference> 8d4dd9e0-97b1-4aaa-bcbf-fbda6ab548a3
+    7fd27772-4581-4be1-ab96-cc2c464785cd: !<reference> 9b26146d-22b1-4a25-8e31-c66212068123
+    c0f69fab-04d1-4384-4ea6-ed1dfa1087d7: !<reference> a0e09de1-44f9-4196-9f12-72d014143a54
+    e789206f-5dd6-4f30-83ff-3dbcc4357b84: !<reference> b2df3515-8b95-4b7f-bcb2-6e2089745d9a
+    92e22b22-19d4-4a0a-7a6a-48e28f1a0911: !<reference> 247da9fb-28c3-458f-8dbb-802dee380238
+    92e22b22-19d4-4a0a-8595-b71d70e5f6ee: !<reference> 8bfd25d1-980e-424e-a2cc-810fd7797525
+  ImporterName: NativePackageImporter
+  PrimaryAsset: !<reference> 4f86d03c-133c-45b5-b924-c646c422e6b0
+  PackageType: PackedNativePackageRoot
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    {}
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
