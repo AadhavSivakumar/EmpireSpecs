@@ -2884,15 +2884,13 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: |
+  Text: |-
     Welcome to our solar system.
     
     It may not be to scale, but you are the sun. 
     Pinch the dart and throw it at your planet of choice to learn more!
     
-    Hold the dart with your fingers pinched closed
-    Look around, aim, then throw by opening up your pinch!
-
+    Hold the dart with your fingers pinched closed then throw it by releasing your fingers!
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000

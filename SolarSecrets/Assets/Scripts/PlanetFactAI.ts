@@ -193,7 +193,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
       model: "gpt-4.1-nano",
       messages: [
         { role: "system", content: this.systemPrompt },
-        { role: "user", content: "Tell me a quick interesting fun fact about the planet " + planetName + "." },
+        { role: "user", content: "Tell me one of the many quick interesting fun fact about the planet " + planetName + "." },
       ],
       temperature: 0.7,
     }).then((response) => response.choices[0].message.content || "");
