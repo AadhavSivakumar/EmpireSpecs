@@ -16,3 +16,6 @@ Workspaces/**
 *.lock
 
 # Shipped by Lens Studio
+
+*.md
+!README.md
