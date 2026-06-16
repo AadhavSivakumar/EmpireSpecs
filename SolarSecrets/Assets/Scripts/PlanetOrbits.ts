@@ -77,6 +77,7 @@ export class PlanetOrbits extends BaseScriptComponent {
   private planetScales: number[] = []
   private paused: boolean = false
   private popupToken: number = 0
+  private hideEvent: DelayedCallbackEvent
 
   // Singleton so spawned darts can reach the popup without an inspector reference.
   private static instance: PlanetOrbits
@@ -223,6 +224,7 @@ export class PlanetOrbits extends BaseScriptComponent {
     const caller = this.getAICaller()
     if (!this.useAI || !caller) {
       this.showFact(name, fact) // offline-only (toggle off, or no AI caller wired)
+      this.scheduleHide()       // offline fact is shown now → start the read countdown
       return
     }
 
@@ -235,6 +237,7 @@ export class PlanetOrbits extends BaseScriptComponent {
       if (settled || token !== this.popupToken) return
       settled = true
       if (this.popupBody) this.popupBody.text = text
+      this.scheduleHide() // real fact is on screen now → start the read countdown
     }
 
 //CHANGED: removed
@@ -284,18 +287,24 @@ export class PlanetOrbits extends BaseScriptComponent {
     this.popupPanel.getTransform().setWorldRotation(quat.angleAxis(yaw, vec3.up()))
   }
 
-  // Called by DartStick when a dart sticks to a planet.
+  // Shows the popup (text + enable + pause). The hide countdown is started
+  // separately via scheduleHide(), so AI mode can wait until the real fact lands.
   showFact(name: string, fact: string): void {
     if (this.popupTitle) this.popupTitle.text = name
     if (this.popupBody) this.popupBody.text = fact
     if (this.popupPanel) this.popupPanel.enabled = true
     this.paused = true // freeze orbits while reading
+  }
 
-    const hide = this.createEvent("DelayedCallbackEvent")
-    hide.bind(() => {
-      if (this.popupPanel) this.popupPanel.enabled = false
-      this.paused = false
-    })
-    hide.reset(this.popupDuration)
+  /** (Re)start the auto-hide countdown. Call this once the FINAL fact text is shown. */
+  private scheduleHide(): void {
+    if (!this.hideEvent) {
+      this.hideEvent = this.createEvent("DelayedCallbackEvent")
+      this.hideEvent.bind(() => {
+        if (this.popupPanel) this.popupPanel.enabled = false
+        this.paused = false
+      })
+    }
+    this.hideEvent.reset(this.popupDuration)
   }
 }

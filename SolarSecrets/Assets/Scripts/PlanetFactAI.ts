@@ -187,15 +187,30 @@ export class ExampleOAICalls extends BaseScriptComponent {
       });
   }
 
-  // Returns a 1–3 sentence fact about a planet, for PlanetOrbits to display.
+  // Different angle to nudge each call toward, so repeated hits don't repeat facts.
+  private factFocuses: string[] = [
+    "its color and appearance",
+    "its temperature, weather, or storms",
+    "its moons, rings, or satellites",
+    "its size compared to Earth",
+    "the Greek or Roman mythology behind its name",
+    "how it spins, tilts, or orbits the Sun",
+    "what its atmosphere or surface is made of",
+    "its surface features, terrain, or structures",
+    "how or when humans discovered or explored it",
+    "a surprising, lesser-known detail",
+  ];
+
+  // Returns a short fact about a planet, for PlanetOrbits to display.
   generatePlanetFact(planetName: string): Promise<string> {
+    const focus = this.factFocuses[Math.floor(Math.random() * this.factFocuses.length)];
     return OpenAI.chatCompletions({
       model: "gpt-4.1-nano",
       messages: [
         { role: "system", content: this.systemPrompt },
-        { role: "user", content: "Tell me one of the many quick interesting fun fact about the planet " + planetName + "." },
+        { role: "user", content: "Planet: " + planetName + ". Focus on " + focus + ". Give one fresh, true fact — not the most obvious one." },
       ],
-      temperature: 0.7,
+      temperature: 0.95,
     }).then((response) => response.choices[0].message.content || "");
   }
 }
